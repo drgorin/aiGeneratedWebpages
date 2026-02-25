@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Keep Your Treatment on Track | gorinOrthodontics</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+    :root {
+      --navy: #1a2f45;
+      --teal: #2a6b7c;
+      --teal-light: #3d8fa3;
+      --cream: #f8f4ef;
+      --warm-white: #fdfaf6;
+      --gold: #d4a84b;
+      --warning: #c0392b;
+      --text-dark: #1e2d3d;
+      --text-mid: #4a5e72;
+      --border: #dde8ee;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { overflow-x: hidden; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      line-height: 1.65;
+      overflow-x: hidden;
+      overflow-y: hidden;
+    }
+
+    .hero {
+      background: var(--navy);
+      padding: 70px 24px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -80px;
+      width: 380px; height: 380px;
+      background: radial-gradient(circle, rgba(42,107,124,0.35) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -40px; left: -60px;
+      width: 280px; height: 280px;
+      background: radial-gradient(circle, rgba(212,168,75,0.18) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+      margin: 0 auto;
+      animation: fadeUp 0.7s ease both;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      background: var(--teal);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 20px;
+      margin-bottom: 22px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 5vw, 50px);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 18px;
+    }
+    .hero h1 span { color: var(--gold); }
+    .hero-sub {
+      font-size: clamp(15px, 2.5vw, 17px);
+      color: rgba(255,255,255,0.75);
+      max-width: 560px;
+      margin: 0 auto;
+      font-weight: 300;
+    }
+
+    .section { padding: 64px 24px; }
+    .section-inner { max-width: 860px; margin: 0 auto; }
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(22px, 3.5vw, 36px);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+    .section-body { font-size: clamp(14px, 2vw, 16px); color: var(--text-mid); max-width: 680px; }
+
+    .divider { height: 1px; background: var(--border); max-width: 860px; margin: 0 auto; }
+
+    .risk-section { background: var(--warm-white); }
+    .risk-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .risk-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-top: 4px solid var(--teal);
+      border-radius: 12px;
+      padding: 28px 24px;
+      transition: box-shadow 0.2s;
+    }
+    .risk-card:hover { box-shadow: 0 8px 28px rgba(26,47,69,0.1); }
+    .risk-card .icon { font-size: 30px; margin-bottom: 14px; display: block; }
+    .risk-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .risk-card p { font-size: 14px; color: var(--text-mid); line-height: 1.6; }
+    .risk-card .source-tag {
+      display: inline-block;
+      margin-top: 14px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: var(--teal);
+      text-transform: uppercase;
+    }
+
+    .alert-band {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%);
+      padding: 52px 24px;
+    }
+    .alert-band-inner {
+      max-width: 780px;
+      margin: 0 auto;
+      display: flex;
+      gap: 28px;
+      align-items: flex-start;
+    }
+    .alert-icon-wrap {
+      flex-shrink: 0;
+      width: 54px; height: 54px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+    .alert-band h2 {
+      font-family: 'Playfair Display', serif;
+      color: #fff;
+      font-size: clamp(18px, 2.8vw, 28px);
+      margin-bottom: 10px;
+    }
+    .alert-band p { color: rgba(255,255,255,0.82); font-size: clamp(14px, 2vw, 15.5px); font-weight: 300; }
+    .alert-band strong { color: var(--gold); font-weight: 600; }
+
+    .timeline-section { background: var(--cream); }
+    .timeline { margin-top: 40px; position: relative; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 28px; top: 0; bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+    .timeline-item {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      padding: 0 0 36px 0;
+      position: relative;
+    }
+    .timeline-dot {
+      flex-shrink: 0;
+      width: 58px; height: 58px;
+      background: var(--teal);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 4px 14px rgba(42,107,124,0.3);
+    }
+    .timeline-dot.bad { background: var(--warning); box-shadow: 0 4px 14px rgba(192,57,43,0.3); }
+    .timeline-dot.good { background: var(--gold); color: var(--navy); box-shadow: 0 4px 14px rgba(212,168,75,0.3); }
+    .timeline-content {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 22px;
+      flex: 1;
+      margin-top: 8px;
+    }
+    .timeline-content.good-card { border-color: var(--gold); }
+    .timeline-content h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .timeline-content p { font-size: 14px; color: var(--text-mid); }
+
+    .action-section { background: var(--warm-white); }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 36px;
+    }
+    .step {
+      text-align: center;
+      padding: 32px 20px;
+      background: #fff;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+    }
+    .step-num {
+      width: 44px; height: 44px;
+      background: var(--navy);
+      color: #fff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 700;
+      margin: 0 auto 16px;
+    }
+    .step h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .step p { font-size: 13.5px; color: var(--text-mid); }
+
+    .closing-band {
+      background: var(--navy);
+      padding: 56px 24px;
+      text-align: center;
+    }
+    .closing-band h2 {
+      font-family: 'Playfair Display', serif;
+      color: #fff;
+      font-size: clamp(22px, 3vw, 34px);
+      margin-bottom: 14px;
+    }
+    .closing-band h2 span { color: var(--gold); }
+    .closing-band p {
+      color: rgba(255,255,255,0.72);
+      font-size: clamp(14px, 2vw, 16px);
+      font-weight: 300;
+      max-width: 520px;
+      margin: 0 auto 32px;
+    }
+    .closing-btn {
+      display: inline-block;
+      background: var(--teal);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 15px 38px;
+      border-radius: 40px;
+      text-decoration: none;
+      box-shadow: 0 6px 24px rgba(42,107,124,0.4);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .closing-btn:hover { background: var(--teal-light); transform: translateY(-2px); }
+
+    footer {
+      background: #111f2e;
+      padding: 36px 24px;
+      text-align: center;
+    }
+    footer p {
+      color: rgba(255,255,255,0.4);
+      font-size: 12px;
+      max-width: 640px;
+      margin: 0 auto 8px;
+      line-height: 1.7;
+    }
+
+    /* MOBILE */
+    @media (max-width: 600px) {
+      .section { padding: 48px 16px; }
+      .hero { padding: 52px 16px 44px; }
+
+      .timeline::before { display: none; }
+      .timeline-item { flex-direction: column; align-items: center; gap: 10px; padding-bottom: 20px; }
+      .timeline-dot { width: 48px; height: 48px; font-size: 17px; }
+      .timeline-content { margin-top: 0; width: 100%; text-align: center; }
+
+      .alert-band-inner { flex-direction: column; gap: 16px; }
+      .alert-icon-wrap { margin: 0 auto; }
+
+      .risk-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; }
+
+      .closing-btn { display: block; width: 100%; text-align: center; padding: 16px 20px; font-size: 15px; }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-inner">
+    <span class="hero-eyebrow">A Note from Dr. Neil Gorin</span>
+    <h1>We Want to See<br><span>Your Smile Thrive</span></h1>
+    <p class="hero-sub">Regular appointments are the heartbeat of your orthodontic treatment. When visits are missed, it is not just your timeline that is affected -- your teeth's health can be too.</p>
+  </div>
+</section>
+
+<section class="section risk-section">
+  <div class="section-inner">
+    <p class="section-label">Clinical Considerations</p>
+    <h2 class="section-title">What's Happening Between Visits</h2>
+    <p class="section-body">Orthodontic treatment works through a carefully managed biological process. Your teeth, roots, and surrounding bone are in constant response to the gentle forces of your braces or aligners. When appointments are skipped and treatment extends beyond its intended timeframe, that process continues -- unsupervised -- and certain risks can quietly grow.</p>
+    <div class="risk-grid">
+      <div class="risk-card">
+        <span class="icon">&#x1F9B7;</span>
+        <h3>Root Resorption</h3>
+        <p>Orthodontic forces naturally trigger a mild inflammatory response that allows teeth to move. Research consistently shows that prolonged treatment duration is one of the strongest risk factors for root shortening -- a permanent change that can affect your teeth for life.</p>
+        <span class="source-tag">AAO / Clinical Literature</span>
+      </div>
+      <div class="risk-card">
+        <span class="icon">&#x1FA7A;</span>
+        <h3>Bone and Periodontal Support</h3>
+        <p>The bone and periodontal ligament surrounding your teeth are dynamic -- they remodel throughout treatment. Without regular monitoring, excess stress on these supporting structures can go undetected and uncorrected, potentially compromising the foundation of your smile.</p>
+        <span class="source-tag">Periodontal Health</span>
+      </div>
+      <div class="risk-card">
+        <span class="icon">&#x1F4CD;</span>
+        <h3>Unintended Tooth Movement</h3>
+        <p>Between appointments, teeth can drift in directions your treatment plan did not intend. Without timely adjustments, corrections become more complex -- adding time and effort to what should have been a straightforward finish.</p>
+        <span class="source-tag">Treatment Precision</span>
+      </div>
+      <div class="risk-card">
+        <span class="icon">&#x23F1;</span>
+        <h3>Extended Treatment Time</h3>
+        <p>Every missed visit pushes your estimated completion date further out. With each additional month in treatment, the cumulative biological risks described above have more time to develop. Staying on schedule is the most effective way to protect your teeth and your results.</p>
+        <span class="source-tag">Treatment Efficiency</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="alert-band">
+  <div class="alert-band-inner">
+    <div class="alert-icon-wrap">&#x26A0;</div>
+    <div>
+      <h2>The Longer Treatment Takes, the Greater the Risk</h2>
+      <p>The American Association of Orthodontists and published orthodontic research agree: <strong>prolonged treatment time</strong> is one of the most significant and controllable risk factors for root and tissue damage. The single most powerful thing you can do to protect yourself is simply <strong>keep your appointments</strong>.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section timeline-section">
+  <div class="section-inner">
+    <p class="section-label">Understanding the Pattern</p>
+    <h2 class="section-title">How Gaps in Care Compound</h2>
+    <p class="section-body">Each skipped visit seems small in isolation. But here is how the picture often unfolds over time:</p>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot">1</div>
+        <div class="timeline-content">
+          <h4>An Appointment Is Postponed</h4>
+          <p>Life gets busy. A visit gets pushed back a few weeks -- or longer.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot bad">2</div>
+        <div class="timeline-content">
+          <h4>Forces Continue Without Guidance</h4>
+          <p>Your braces or aligners keep working -- but without your doctor's oversight, teeth may begin moving in unintended ways.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot bad">3</div>
+        <div class="timeline-content">
+          <h4>Corrections Become Necessary</h4>
+          <p>At your next visit, your orthodontist may need to address unplanned movements -- adding steps that were not part of the original treatment plan.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot bad">4</div>
+        <div class="timeline-content">
+          <h4>Treatment Duration Grows</h4>
+          <p>A longer treatment timeline means more cumulative exposure to orthodontic forces -- and a meaningfully higher risk of root and tissue effects.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot good">&#x2713;</div>
+        <div class="timeline-content good-card">
+          <h4>Consistent Appointments Break the Cycle</h4>
+          <p>Keeping your scheduled visits -- even when things get hectic -- is the most direct way to stay on track, minimize risk, and finish your treatment on time.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section action-section">
+  <div class="section-inner">
+    <p class="section-label">Moving Forward</p>
+    <h2 class="section-title">Getting Back on Schedule Is Simple</h2>
+    <p class="section-body">Our team is here to make it as easy as possible. Here is all it takes:</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4>Reach Out to Us</h4>
+        <p>Call, text, or use our online scheduler. No judgment -- we are just glad to hear from you.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4>Come In for a Visit</h4>
+        <p>We will assess where things stand, make any needed adjustments, and get your treatment moving forward again.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4>Stay on Track</h4>
+        <p>We will help you build a manageable appointment schedule so the rest of treatment goes smoothly and safely.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="closing-band">
+  <h2>Your Smile Is Worth <span>Finishing</span></h2>
+  <p>You have already invested so much time and effort. Let us protect that investment together -- and get you to the finish line with a healthy, beautiful result.</p>
+  <a href="tel:+17184365175" class="closing-btn">Call Us: (718) 436-5175 or (516) 599-5283</a>
+</section>
+
+<footer>
+  <p>This page is provided as a patient education resource. Clinical information regarding risks associated with prolonged orthodontic treatment duration is supported by the American Association of Orthodontists and peer-reviewed orthodontic research literature.</p>
+  <p style="margin-top: 10px;">&#169; gorinOrthodontics | Patient Care Resources</p>
+</footer>
+
+<!-- Wix iFrame auto-resize: fires on load, font load, resize, and via ResizeObserver -->
+<script>
+  function sendHeight() {
+    var height = document.documentElement.scrollHeight;
+    window.parent.postMessage(JSON.stringify({ type: 'WIX_HEIGHT', height: height }), '*');
+  }
+
+  // Fire immediately, then again after a short delay to catch font reflow
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 800);
+
+  // Re-fire on window resize (handles mobile orientation changes)
+  window.addEventListener('resize', sendHeight);
+
+  // Re-fire once all resources including fonts are fully loaded
+  window.addEventListener('load', function() {
+    sendHeight();
+    setTimeout(sendHeight, 300);
+  });
+
+  // ResizeObserver watches the body for any content size changes
+  if (window.ResizeObserver) {
+    var observer = new ResizeObserver(function() {
+      sendHeight();
+    });
+    observer.observe(document.body);
+  }
+</script>
+
+</body>
+</html>
