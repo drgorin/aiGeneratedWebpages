@@ -481,35 +481,7 @@
   <p style="margin-top: 10px;">&#169; gorinOrthodontics | Patient Care Resources</p>
 </footer>
 
-<!-- Wix iFrame auto-resize: fires on load, font load, resize, and via ResizeObserver -->
-<script>
-  function sendHeight() {
-    var height = document.documentElement.scrollHeight;
-    window.parent.postMessage(JSON.stringify({ type: 'WIX_HEIGHT', height: height }), '*');
-  }
 
-  // Fire immediately, then again after a short delay to catch font reflow
-  sendHeight();
-  setTimeout(sendHeight, 300);
-  setTimeout(sendHeight, 800);
-
-  // Re-fire on window resize (handles mobile orientation changes)
-  window.addEventListener('resize', sendHeight);
-
-  // Re-fire once all resources including fonts are fully loaded
-  window.addEventListener('load', function() {
-    sendHeight();
-    setTimeout(sendHeight, 300);
-  });
-
-  // ResizeObserver watches the body for any content size changes
-  if (window.ResizeObserver) {
-    var observer = new ResizeObserver(function() {
-      sendHeight();
-    });
-    observer.observe(document.body);
-  }
-</script>
 
 </body>
 </html>
